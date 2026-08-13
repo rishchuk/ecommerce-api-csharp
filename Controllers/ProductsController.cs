@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using EcommerceApi.Models;
+﻿using EcommerceApi.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceApi.Controllers;
 
@@ -7,14 +8,17 @@ namespace EcommerceApi.Controllers;
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
-    [HttpGet]
-    public IActionResult GetProducts()
+    private readonly AppDbContext _context;
+
+    public ProductsController(AppDbContext context)
     {
-        var products = new[]
-        {
-            new Product { Id = 1, Name = "Laptop", Price = 999.99m },
-            new Product { Id = 2, Name = "Mouse", Price = 29.99m }
-        };
+        _context = context;
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> GetProducts()
+    {
+        var products = await _context.Products.ToListAsync();
 
         return Ok(products);
     }
