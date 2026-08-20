@@ -57,7 +57,7 @@ public class ProductsController : ControllerBase
     }
     
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateProduct(int id, CreateProductDto dto)
+    public async Task<IActionResult> UpdateProduct(int id, UpdateProductDto dto)
     {
         var product = await _context.Products.FindAsync(id);
 

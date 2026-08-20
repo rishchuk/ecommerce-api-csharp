@@ -2,7 +2,7 @@
 
 namespace EcommerceApi.DTOs;
 
-public class CreateProductDto
+public class UpdateProductDto
 {
     [Required]
     [StringLength(100, MinimumLength = 2)]
