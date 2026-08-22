@@ -17,4 +17,9 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="EcommerceApi.Tests/**/*.cs" />
+    <None Remove="EcommerceApi.Tests/**/*.cs" />
+  </ItemGroup>
+
 </Project>
